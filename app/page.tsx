@@ -1,101 +1,278 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
+import { useState } from "react";
+
+const categories = [
+	{ id: "video", name: "動画配信" },
+	{ id: "music", name: "音楽ストリーミング" },
+	{ id: "other", name: "生活・その他" },
+	{ id: "food", name: "フードデリバリー" },
+	{ id: "education", name: "教育" },
+];
+
+const subscriptionServices = [
+	{
+		name: "Netflix",
+		logo: "/logos/netflix-logo.png",
+		cancelUrl: "https://www.netflix.com/jp/cancelplan",
+		description: "映画・ドラマ・アニメ見放題",
+		category: "video",
+	},
+	{
+		name: "Amazon Prime Video",
+		logo: "/logos/amazon-prime.png",
+		cancelUrl: "https://www.amazon.co.jp/gp/video/settings",
+		description: "プライム会員なら映画・ドラマ見放題",
+		category: "video",
+	},
+	{
+		name: "Disney+",
+		logo: "/logos/disney-plus.png",
+		cancelUrl: "https://www.disneyplus.com/ja-jp/account/subscription",
+		description: "ディズニー・マーベル・スターウォーズ作品",
+		category: "video",
+	},
+	{
+		name: "Hulu",
+		logo: "/logos/hulu.png",
+		cancelUrl: "https://www.hulu.jp/account",
+		description: "国内ドラマ・バラエティが充実",
+		category: "video",
+	},
+	{
+		name: "U-NEXT",
+		logo: "/logos/u-next.png",
+		cancelUrl: "https://www.netflix.com/cancelplan",
+		description: "映画・ドラマ・アニメに加えて雑誌も読める",
+		category: "video",
+	},
+	{
+		name: "ABEMAプレミアム",
+		logo: "/logos/abema.png",
+		cancelUrl: "https://abema.tv/my/premium",
+		description: "ABEMAの限定コンテンツ見放題",
+		category: "video",
+	},
+	{
+		name: "Spotify",
+		logo: "/logos/spotify-logo.svg",
+		cancelUrl: "https://www.spotify.com/jp/account/subscription/",
+		description: "無料でも聴けるが広告あり",
+		category: "music",
+	},
+	{
+		name: "Apple Music",
+		logo: "/logos/apple-music-logo.svg",
+		cancelUrl: "https://music.apple.com/jp/account",
+		description: "iPhoneユーザーに人気",
+		category: "music",
+	},
+	{
+		name: "Amazon Music Unlimited",
+		logo: "/logos/amazon-music-unlimited-logo.svg",
+		cancelUrl: "https://music.amazon.co.jp/settings",
+		description: "Amazonプライム会員ならお得",
+		category: "music",
+	},
+	{
+		name: "YouTube Music",
+		logo: "/logos/youtube-music-logo.svg",
+		cancelUrl: "https://music.youtube.com/paid_memberships",
+		description: "YouTubeの動画もバックグラウンド再生可",
+		category: "music",
+	},
+	{
+		name: "LINE MUSIC",
+		logo: "/logos/line-music-logo.svg",
+		cancelUrl: "https://music.line.me/webapp/membership/mypage",
+		description: "LINEのプロフィールで音楽を設定できる",
+		category: "music",
+	},
+	{
+		name: "Amazon Prime",
+		logo: "/logos/amazon-prime-logo.svg",
+		cancelUrl: "https://www.amazon.co.jp/mm/pipeline/cancellation",
+		description: "送料無料・動画・音楽・本の特典つき",
+		category: "other",
+	},
+	{
+		name: "ChatGPT Plus",
+		logo: "/logos/chatgpt-plus-logo.svg",
+		cancelUrl: "https://chat.openai.com/membership",
+		description: "AIの応答が高速になる",
+		category: "other",
+	},
+	{
+		name: "Yahoo!プレミアム",
+		logo: "/logos/yahoo-premium-logo.svg",
+		cancelUrl: "https://premium.yahoo.co.jp/membership",
+		description: "PayPayポイント還元が多くなる",
+		category: "other",
+	},
+	{
+		name: "NewsPicks プレミアム",
+		logo: "/logos/newspicks-premium-logo.svg",
+		cancelUrl: "https://newspicks.com/settings/premium",
+		description: "経済ニュースの解説付き",
+		category: "other",
+	},
+	{
+		name: "YouTube Premium",
+		logo: "/logos/youtube-premium.png",
+		cancelUrl: "https://www.youtube.com/paid_memberships",
+		description: "広告なしでYouTubeを楽しめる",
+		category: "video",
+	},
+	{
+		name: "chochozap",
+		logo: "/logos/chochozap-logo.svg",
+		cancelUrl: "https://chochozap.com/mypage",
+		description: "漫画や雑誌が読み放題",
+		category: "other",
+	},
+	{
+		name: "Amazon Music Prime",
+		logo: "/logos/amazon-music-prime-logo.svg",
+		cancelUrl: "https://music.amazon.co.jp/settings",
+		description: "Amazonプライム会員向け音楽ストリーミング",
+		category: "music",
+	},
+	{
+		name: "Notion",
+		logo: "/logos/notion-logo.svg",
+		cancelUrl: "https://www.notion.so/my-account",
+		description: "オールインワンのワークスペースツール",
+		category: "other",
+	},
+	{
+		name: "Figma",
+		logo: "/logos/figma-logo.svg",
+		cancelUrl: "https://www.figma.com/account",
+		description: "デザインツール",
+		category: "other",
+	},
+	{
+		name: "Canva",
+		logo: "/logos/canva-logo.svg",
+		cancelUrl: "https://www.canva.com/account/billing/",
+		description: "グラフィックデザインプラットフォーム",
+		category: "other",
+	},
+	{
+		name: "Uber Eats",
+		logo: "/logos/uber-eats-logo.svg",
+		cancelUrl: "https://www.ubereats.com/jp/account/eats-pass",
+		description: "フードデリバリーサービス",
+		category: "food",
+	},
+	{
+		name: "出前館",
+		logo: "/logos/demaekan-logo.svg",
+		cancelUrl: "https://demae-can.com/mypage/premium/",
+		description: "フードデリバリーサービス",
+		category: "food",
+	},
+	{
+		name: "スタディサプリ",
+		logo: "/logos/studysapuri-logo.svg",
+		cancelUrl: "https://studysapuri.jp/mypage/account",
+		description: "オンライン学習サービス",
+		category: "education",
+	},
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	const [activeCategory, setActiveCategory] = useState("video");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	return (
+		<main className="min-h-screen bg-orange-50 py-12 px-4 sm:px-6 lg:px-8">
+			<div className="max-w-7xl mx-auto">
+				<h1 className="text-4xl font-bold text-center text-orange-800 mb-12">
+					解約くん
+				</h1>
+				<p className="text-xl text-center text-orange-700 mb-12">
+					面倒なサブスクの解約ページに一瞬で。
+				</p>
+				<Tabs defaultValue="video" className="w-full mb-8">
+					<TabsList className="grid w-full grid-cols-3 sm:grid-cols-5">
+						{categories.map((category) => (
+							<TabsTrigger
+								key={category.id}
+								value={category.id}
+								onClick={() => setActiveCategory(category.id)}
+								className="data-[state=active]:bg-orange-200 data-[state=active]:text-orange-800"
+							>
+								{category.name}
+							</TabsTrigger>
+						))}
+					</TabsList>
+				</Tabs>
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{subscriptionServices
+						.filter((service) => service.category === activeCategory)
+						.map((service) => (
+							<Card
+								key={service.name}
+								className="hover:shadow-lg transition-shadow duration-300 bg-white"
+							>
+								<CardHeader className="bg-white rounded-t-lg">
+									<div className="w-full h-24 relative mb-4 transition-transform duration-300 ease-in-out transform group-hover:scale-105">
+										<Image
+											src={service.logo || "/placeholder.svg"}
+											alt={`${service.name}のロゴ`}
+											layout="fill"
+											objectFit="contain"
+											priority
+											onError={(e) => {
+												const img = e.target as HTMLImageElement;
+												img.onerror = null;
+												img.src = "/placeholder-logo.svg";
+											}}
+										/>
+									</div>
+									<CardTitle className="text-orange-800">
+										{service.name}
+									</CardTitle>
+									<CardDescription className="text-orange-600">
+										{service.description}
+									</CardDescription>
+								</CardHeader>
+								<CardContent>
+									<Button
+										asChild
+										className="w-full bg-orange-500 hover:bg-orange-600"
+									>
+										<a
+											href={service.cancelUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											解約ページへ
+										</a>
+									</Button>
+								</CardContent>
+							</Card>
+						))}
+				</div>
+				<div className="mt-12 text-center text-sm text-orange-700">
+					<p>
+						このサイトは情報提供のみを目的としています。各サービスの解約ポリシーは変更される可能性があります。
+					</p>
+					<p>
+						このサイトは上記のサービスと正式に提携しているものではありません。
+					</p>
+				</div>
+			</div>
+		</main>
+	);
 }
