@@ -87,14 +87,14 @@ const subscriptionServices = [
 	{
 		name: "ChatGPT Plus",
 		logo: "/logos/chat-gpt.png",
-		cancelUrl: "https://chat.openai.com/membership",
+		cancelUrl: "https://chatgpt.com/c#pricing",
 		description: "AIの応答が高速になる",
 		category: "other",
 	},
 	{
 		name: "NewsPicks プレミアム",
 		logo: "/logos/news-picks.png",
-		cancelUrl: "https://newspicks.com/settings/premium",
+		cancelUrl: "https://newspicks.com/settings/subscriptions/change-plan/",
 		description: "経済ニュースの解説付き",
 		category: "other",
 	},
@@ -106,13 +106,6 @@ const subscriptionServices = [
 		category: "video",
 	},
 	{
-		name: "chochozap",
-		logo: "/logos/choco-zap.svg",
-		cancelUrl: "https://chochozap.com/mypage",
-		description: "漫画や雑誌が読み放題",
-		category: "other",
-	},
-	{
 		name: "Amazon Music Prime",
 		logo: "/logos/amazon-music.png",
 		cancelUrl: "https://music.amazon.co.jp/settings",
@@ -120,33 +113,26 @@ const subscriptionServices = [
 		category: "music",
 	},
 	{
-		name: "Figma",
-		logo: "/logos/figma.png",
-		cancelUrl: "https://www.figma.com/account",
-		description: "デザインツール",
-		category: "other",
-	},
-	{
 		name: "Canva",
 		logo: "/logos/canva.png",
-		cancelUrl: "https://www.canva.com/account/billing/",
+		cancelUrl: "https://www.canva.com/settings/billing-and-teams",
 		description: "グラフィックデザインプラットフォーム",
 		category: "other",
 	},
 	{
 		name: "Uber Eats",
 		logo: "/logos/uber-eats.png",
-		cancelUrl: "https://www.ubereats.com/jp/account/eats-pass",
+		cancelUrl: "https://www.ubereats.com/jp/uber-one",
 		description: "フードデリバリーサービス",
 		category: "food",
 	},
-	{
-		name: "出前館",
-		logo: "/logos/demaekan.png",
-		cancelUrl: "https://demae-can.com/mypage/premium/",
-		description: "フードデリバリーサービス",
-		category: "food",
-	},
+	// {
+	// 	name: "出前館",
+	// 	logo: "/logos/demaekan.png",
+	// 	cancelUrl: "https://demae-can.com/mypage/premium/",
+	// 	description: "フードデリバリーサービス",
+	// 	category: "food",
+	// },
 ];
 
 export default function Home() {
