@@ -65,63 +65,35 @@ const subscriptionServices = [
 	},
 	{
 		name: "Spotify",
-		logo: "/logos/spotify-logo.svg",
+		logo: "/logos/spotify.png",
 		cancelUrl: "https://www.spotify.com/jp/account/subscription/",
 		description: "無料でも聴けるが広告あり",
 		category: "music",
 	},
 	{
 		name: "Apple Music",
-		logo: "/logos/apple-music-logo.svg",
+		logo: "/logos/apple-music.png",
 		cancelUrl: "https://music.apple.com/jp/account",
 		description: "iPhoneユーザーに人気",
 		category: "music",
 	},
 	{
-		name: "Amazon Music Unlimited",
-		logo: "/logos/amazon-music-unlimited-logo.svg",
-		cancelUrl: "https://music.amazon.co.jp/settings",
-		description: "Amazonプライム会員ならお得",
-		category: "music",
-	},
-	{
-		name: "YouTube Music",
-		logo: "/logos/youtube-music-logo.svg",
-		cancelUrl: "https://music.youtube.com/paid_memberships",
-		description: "YouTubeの動画もバックグラウンド再生可",
-		category: "music",
-	},
-	{
-		name: "LINE MUSIC",
-		logo: "/logos/line-music-logo.svg",
-		cancelUrl: "https://music.line.me/webapp/membership/mypage",
-		description: "LINEのプロフィールで音楽を設定できる",
-		category: "music",
-	},
-	{
 		name: "Amazon Prime",
-		logo: "/logos/amazon-prime-logo.svg",
+		logo: "/logos/amazon-prime.png",
 		cancelUrl: "https://www.amazon.co.jp/mm/pipeline/cancellation",
 		description: "送料無料・動画・音楽・本の特典つき",
 		category: "other",
 	},
 	{
 		name: "ChatGPT Plus",
-		logo: "/logos/chatgpt-plus-logo.svg",
+		logo: "/logos/chat-gpt.png",
 		cancelUrl: "https://chat.openai.com/membership",
 		description: "AIの応答が高速になる",
 		category: "other",
 	},
 	{
-		name: "Yahoo!プレミアム",
-		logo: "/logos/yahoo-premium-logo.svg",
-		cancelUrl: "https://premium.yahoo.co.jp/membership",
-		description: "PayPayポイント還元が多くなる",
-		category: "other",
-	},
-	{
 		name: "NewsPicks プレミアム",
-		logo: "/logos/newspicks-premium-logo.svg",
+		logo: "/logos/news-picks.png",
 		cancelUrl: "https://newspicks.com/settings/premium",
 		description: "経済ニュースの解説付き",
 		category: "other",
@@ -135,59 +107,45 @@ const subscriptionServices = [
 	},
 	{
 		name: "chochozap",
-		logo: "/logos/chochozap-logo.svg",
+		logo: "/logos/choco-zap.svg",
 		cancelUrl: "https://chochozap.com/mypage",
 		description: "漫画や雑誌が読み放題",
 		category: "other",
 	},
 	{
 		name: "Amazon Music Prime",
-		logo: "/logos/amazon-music-prime-logo.svg",
+		logo: "/logos/amazon-music.png",
 		cancelUrl: "https://music.amazon.co.jp/settings",
 		description: "Amazonプライム会員向け音楽ストリーミング",
 		category: "music",
 	},
 	{
-		name: "Notion",
-		logo: "/logos/notion-logo.svg",
-		cancelUrl: "https://www.notion.so/my-account",
-		description: "オールインワンのワークスペースツール",
-		category: "other",
-	},
-	{
 		name: "Figma",
-		logo: "/logos/figma-logo.svg",
+		logo: "/logos/figma.png",
 		cancelUrl: "https://www.figma.com/account",
 		description: "デザインツール",
 		category: "other",
 	},
 	{
 		name: "Canva",
-		logo: "/logos/canva-logo.svg",
+		logo: "/logos/canva.png",
 		cancelUrl: "https://www.canva.com/account/billing/",
 		description: "グラフィックデザインプラットフォーム",
 		category: "other",
 	},
 	{
 		name: "Uber Eats",
-		logo: "/logos/uber-eats-logo.svg",
+		logo: "/logos/uber-eats.png",
 		cancelUrl: "https://www.ubereats.com/jp/account/eats-pass",
 		description: "フードデリバリーサービス",
 		category: "food",
 	},
 	{
 		name: "出前館",
-		logo: "/logos/demaekan-logo.svg",
+		logo: "/logos/demaekan.png",
 		cancelUrl: "https://demae-can.com/mypage/premium/",
 		description: "フードデリバリーサービス",
 		category: "food",
-	},
-	{
-		name: "スタディサプリ",
-		logo: "/logos/studysapuri-logo.svg",
-		cancelUrl: "https://studysapuri.jp/mypage/account",
-		description: "オンライン学習サービス",
-		category: "education",
 	},
 ];
 
@@ -228,7 +186,7 @@ export default function Home() {
 								<CardHeader className="bg-white rounded-t-lg">
 									<div className="w-full h-24 relative mb-4 transition-transform duration-300 ease-in-out transform group-hover:scale-105">
 										<Image
-											src={service.logo || "/placeholder.svg"}
+											src={service.logo}
 											alt={`${service.name}のロゴ`}
 											layout="fill"
 											objectFit="contain"
@@ -236,7 +194,7 @@ export default function Home() {
 											onError={(e) => {
 												const img = e.target as HTMLImageElement;
 												img.onerror = null;
-												img.src = "/placeholder-logo.svg";
+												img.src = "";
 											}}
 										/>
 									</div>
