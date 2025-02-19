@@ -6,7 +6,7 @@ import "./globals.css";
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "サブスク解約",
+	title: "サブスク解約くん",
 	description: "面倒なサブスクの解約ページに一瞬で。",
 };
 
