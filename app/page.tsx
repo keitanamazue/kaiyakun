@@ -25,6 +25,7 @@ const subscriptionServices = [
 		name: "Netflix",
 		logo: "/logos/netflix-logo.png",
 		cancelUrl: "https://www.netflix.com/jp/cancelplan",
+		registerUrl: "https://www.netflix.com/jp/",
 		description: "映画・ドラマ・アニメ見放題",
 		category: "video",
 	},
@@ -32,6 +33,7 @@ const subscriptionServices = [
 		name: "Amazon Prime Video",
 		logo: "/logos/amazon-prime.png",
 		cancelUrl: "https://www.amazon.co.jp/gp/video/settings",
+		registerUrl: "https://www.amazon.co.jp/primevideo",
 		description: "プライム会員なら映画・ドラマ見放題",
 		category: "video",
 	},
@@ -39,6 +41,7 @@ const subscriptionServices = [
 		name: "Disney+",
 		logo: "/logos/disney-plus.png",
 		cancelUrl: "https://www.disneyplus.com/ja-jp/account/subscription",
+		registerUrl: "https://www.disneyplus.com/ja-jp/",
 		description: "ディズニー・マーベル・スターウォーズ作品",
 		category: "video",
 	},
@@ -46,6 +49,7 @@ const subscriptionServices = [
 		name: "Hulu",
 		logo: "/logos/hulu.png",
 		cancelUrl: "https://www.hulu.jp/account",
+		registerUrl: "https://www.hulu.jp/",
 		description: "国内ドラマ・バラエティが充実",
 		category: "video",
 	},
@@ -53,6 +57,7 @@ const subscriptionServices = [
 		name: "U-NEXT",
 		logo: "/logos/u-next.png",
 		cancelUrl: "https://www.netflix.com/cancelplan",
+		registerUrl: "https://video.unext.jp/",
 		description: "映画・ドラマ・アニメに加えて雑誌も読める",
 		category: "video",
 	},
@@ -60,13 +65,15 @@ const subscriptionServices = [
 		name: "ABEMAプレミアム",
 		logo: "/logos/abema.png",
 		cancelUrl: "https://abema.tv/my/premium",
+		registerUrl: "https://px.a8.net/svt/ejp?a8mat=44Z2FL+9IC9MA+4EKC+5YJRM",
 		description: "ABEMAの限定コンテンツ見放題",
 		category: "video",
 	},
 	{
 		name: "Spotify",
 		logo: "/logos/spotify.png",
-		cancelUrl: "https://www.spotify.com/jp/account/subscription/",
+		cancelUrl: "https://www.spotify.com/jp/account/manage-your-plan/",
+		registerUrl: "https://www.spotify.com/jp/",
 		description: "無料でも聴けるが広告あり",
 		category: "music",
 	},
@@ -74,6 +81,7 @@ const subscriptionServices = [
 		name: "Apple Music",
 		logo: "/logos/apple-music.png",
 		cancelUrl: "https://music.apple.com/jp/account",
+		registerUrl: "https://www.apple.com/jp/apple-music/",
 		description: "iPhoneユーザーに人気",
 		category: "music",
 	},
@@ -81,6 +89,7 @@ const subscriptionServices = [
 		name: "Amazon Prime",
 		logo: "/logos/amazon-prime.png",
 		cancelUrl: "https://www.amazon.co.jp/mm/pipeline/cancellation",
+		registerUrl: "https://www.amazon.co.jp/amazonprime",
 		description: "送料無料・動画・音楽・本の特典つき",
 		category: "other",
 	},
@@ -88,13 +97,15 @@ const subscriptionServices = [
 		name: "ChatGPT Plus",
 		logo: "/logos/chat-gpt.png",
 		cancelUrl: "https://chatgpt.com/c#pricing",
+		registerUrl: "https://chatgpt.com/",
 		description: "AIの応答が高速になる",
 		category: "other",
 	},
 	{
 		name: "NewsPicks プレミアム",
-		logo: "/logos/news-picks.png",
+		logo: "/logos/newspicks.png",
 		cancelUrl: "https://newspicks.com/settings/subscriptions/change-plan/",
+		registerUrl: "https://newspicks.com/",
 		description: "経済ニュースの解説付き",
 		category: "other",
 	},
@@ -102,6 +113,7 @@ const subscriptionServices = [
 		name: "YouTube Premium",
 		logo: "/logos/youtube-premium.png",
 		cancelUrl: "https://www.youtube.com/paid_memberships",
+		registerUrl: "https://www.youtube.com/premium",
 		description: "広告なしでYouTubeを楽しめる",
 		category: "video",
 	},
@@ -109,6 +121,7 @@ const subscriptionServices = [
 		name: "Amazon Music Prime",
 		logo: "/logos/amazon-music.png",
 		cancelUrl: "https://music.amazon.co.jp/settings",
+		registerUrl: "https://music.amazon.co.jp/",
 		description: "Amazonプライム会員向け音楽ストリーミング",
 		category: "music",
 	},
@@ -116,6 +129,7 @@ const subscriptionServices = [
 		name: "Canva",
 		logo: "/logos/canva.png",
 		cancelUrl: "https://www.canva.com/settings/billing-and-teams",
+		registerUrl: "https://www.canva.com/",
 		description: "グラフィックデザインプラットフォーム",
 		category: "other",
 	},
@@ -123,6 +137,7 @@ const subscriptionServices = [
 		name: "Uber Eats",
 		logo: "/logos/uber-eats.png",
 		cancelUrl: "https://www.ubereats.com/jp/uber-one",
+		registerUrl: "https://www.ubereats.com/jp",
 		description: "フードデリバリーサービス",
 		category: "food",
 	},
@@ -130,6 +145,7 @@ const subscriptionServices = [
 	// 	name: "出前館",
 	// 	logo: "/logos/demaekan.png",
 	// 	cancelUrl: "https://demae-can.com/mypage/premium/",
+	// 	registerUrl: "https://demae-can.com/",
 	// 	description: "フードデリバリーサービス",
 	// 	category: "food",
 	// },
@@ -194,7 +210,7 @@ export default function Home() {
 								<CardContent>
 									<Button
 										asChild
-										className="w-full bg-orange-500 hover:bg-orange-600"
+										className="w-full bg-orange-500 hover:bg-orange-600 mb-2"
 									>
 										<a
 											href={service.cancelUrl}
@@ -202,6 +218,18 @@ export default function Home() {
 											rel="noopener noreferrer"
 										>
 											解約ページへ
+										</a>
+									</Button>
+									<Button
+										asChild
+										className="w-full bg-green-500 hover:bg-green-600"
+									>
+										<a
+											href={service.registerUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											登録ページへ
 										</a>
 									</Button>
 								</CardContent>
