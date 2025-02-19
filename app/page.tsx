@@ -141,6 +141,14 @@ const subscriptionServices = [
 		description: "フードデリバリーサービス",
 		category: "food",
 	},
+	{
+		name: "Paravi",
+		logo: "/logos/paravi.png",
+		cancelUrl: "https://www.paravi.jp/account",
+		registerUrl: "https://www.paravi.jp/",
+		description: "国内ドラマ・バラエティが充実",
+		category: "video",
+	},
 	// {
 	// 	name: "出前館",
 	// 	logo: "/logos/demaekan.png",
