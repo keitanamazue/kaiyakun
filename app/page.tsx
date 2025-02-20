@@ -33,7 +33,7 @@ const subscriptionServices = [
 		name: "Amazon Prime Video",
 		logo: "/logos/amazon-prime.png",
 		cancelUrl: "https://www.amazon.co.jp/gp/video/settings",
-		registerUrl: "https://www.amazon.co.jp/primevideo",
+		registerUrl: "https://px.a8.net/svt/ejp?a8mat=44Z2FL+D44RHU+5NWU+5YJRM",
 		description: "プライム会員なら映画・ドラマ見放題",
 		category: "video",
 	},
