@@ -64,7 +64,7 @@ const subscriptionServices = [
 	{
 		name: "ABEMAプレミアム",
 		logo: "/logos/abema.png",
-		cancelUrl: "https://abema.tv/my/premium",
+		cancelUrl: "https://abema.tv/subscription/status",
 		registerUrl: "https://px.a8.net/svt/ejp?a8mat=44Z2FL+9IC9MA+4EKC+5YJRM",
 		description: "ABEMAの限定コンテンツ見放題",
 		category: "video",
