@@ -18,6 +18,7 @@ const categories = [
 	{ id: "other", name: "生活・その他" },
 	{ id: "food", name: "フードデリバリー" },
 	{ id: "education", name: "教育" },
+	{ id: "social", name: "SNS" },
 ];
 
 const subscriptionServices = [
@@ -108,6 +109,14 @@ const subscriptionServices = [
 		registerUrl: "https://newspicks.com/",
 		description: "経済ニュースの解説付き",
 		category: "other",
+	},
+	{
+		name: "X",
+		logo: "/logos/X_logo.jpg",
+		cancelUrl: "https://x.com/settings/subscription",
+		registerUrl: "https://x.com/",
+		description: "リアルタイムのニュースとトレンド",
+		category: "social",
 	},
 	{
 		name: "YouTube Premium",
