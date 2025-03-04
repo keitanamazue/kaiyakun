@@ -9,7 +9,8 @@ const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: {
-		default: "【公式】サブスク解約くん - Netflix・Spotify・Huluの解約ページへ",
+		default:
+			"【公式】サブスク解約くん - できないサブスク解約を解決するためのまとめサイト",
 		template: "%s | サブスク解約くん",
 	},
 	description:
@@ -83,7 +84,7 @@ export default function RootLayout({
 	return (
 		<html lang="ja">
 			<body className={`${notoSansJP.className} bg-orange-50`}>{children}</body>
-<Analytics />
+			<Analytics />
 		</html>
 	);
 }
