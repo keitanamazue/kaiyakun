@@ -19,6 +19,7 @@ const categories = [
 	{ id: "food", name: "フードデリバリー" },
 	{ id: "education", name: "教育" },
 	{ id: "social", name: "SNS" },
+	{ id: "tech", name: "Tech" },
 ];
 
 const subscriptionServices = [
@@ -157,6 +158,14 @@ const subscriptionServices = [
 		registerUrl: "https://www.paravi.jp/",
 		description: "国内ドラマ・バラエティが充実",
 		category: "video",
+	},
+	{
+		name: "Midjourney",
+		logo: "/logos/midjourney.png",
+		cancelUrl: "https://www.midjourney.com/account",
+		registerUrl: "https://www.midjourney.com/",
+		description: "AIを使った画像生成サービス",
+		category: "tech",
 	},
 	// {
 	// 	name: "出前館",
